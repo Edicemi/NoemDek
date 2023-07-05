@@ -5,7 +5,7 @@ const path = require('path');
 exports.addSchedule = async(req, res, next) => {
     const { vehicleType, vehicleStatus, driverName, clientName, clientCompany, service, startDate, endDate, pickUp, dropOff, note} = req.body;
     try {
-        if (vehicleType && vehicleStatus && driverName && clientName && clientCompany && service && startDate && endDate && pickUp && dropOff && note) {
+        if (vehicleType && vehicleStatus && driverName && clientName && clientCompany && service && endDate && pickUp && dropOff && note) {
             const schedule = new Schedule({
                 vehicleType: vehicleType,
                 vehicleStatus: vehicleStatus,
@@ -13,7 +13,6 @@ exports.addSchedule = async(req, res, next) => {
                 clientName: clientName,
                 clientCompany: clientCompany,
                 service: service,
-                startDate: startDate,
                 endDate: endDate,
                 pickUp: pickUp,
                 dropOff: dropOff,

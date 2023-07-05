@@ -27,10 +27,9 @@ const scheduleSchema = new mongoose.Schema({
     },
     startDate: {
         type: Date,
-        required: true,
     },
     endDate: {
-        type: Date,
+        type: String,
         required: true,
     },
     pickUp: {
@@ -38,11 +37,11 @@ const scheduleSchema = new mongoose.Schema({
         required: true,
     },
     dropOff: {
-        type: Date,
+        type: String,
         required: true,
     },
     note: {
-        type: Date,
+        type: String,
     },
 }, { timestamps: true });
 

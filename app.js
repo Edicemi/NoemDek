@@ -20,7 +20,7 @@ app.use('/v1', indexRoute);
 
 
 app.get("/", (req, res) => {
-  res.json({ message: "This is the main system application entry point" });
+  res.json({ message: "This is the noem-dek main system application entry point" });
 });
 
 
