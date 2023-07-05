@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const scheduleSchema = new mongoose.Schema({
+    
     vehicleType: {
         type: String,
         required: true,

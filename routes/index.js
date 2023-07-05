@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+router = express.Router();
+const { addSchedule, getSchedule } = require("../controllers/taskA");
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+
+router.post('/addschedule',  addSchedule);
+router.get('/getschedule/:scheduleId', getSchedule);
 
 module.exports = router;
