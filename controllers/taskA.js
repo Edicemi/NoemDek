@@ -5,7 +5,7 @@ const path = require('path');
 exports.addSchedule = async(req, res, next) => {
     const { vehicleType, vehicleStatus, driverName, clientName, clientCompany, service, startDate, endDate, pickUp, dropOff, note} = req.body;
     try {
-        if (vehicleType && vehicleStatus && driverName && clientName && clientCompany && service && endDate && pickUp && dropOff && note) {
+        if (vehicleType && vehicleStatus && driverName && clientName && clientCompany && service && startDate && endDate && pickUp && dropOff && note) {
             const schedule = new Schedule({
                 vehicleType: vehicleType,
                 vehicleStatus: vehicleStatus,
@@ -13,6 +13,7 @@ exports.addSchedule = async(req, res, next) => {
                 clientName: clientName,
                 clientCompany: clientCompany,
                 service: service,
+                startDate: startDate,
                 endDate: endDate,
                 pickUp: pickUp,
                 dropOff: dropOff,
@@ -33,13 +34,22 @@ exports.addSchedule = async(req, res, next) => {
 exports.getSchedule = async (req, res, next) => {
     try {
         const { scheduleId } = req.params;
-        const schedule = await Schedule.findById({ droneId });
-       
-            const schedules = await Schedule.find().select(["vehicleType", "vehicleStatus", "driverName", "clientName", "clientCompany", "service", "startDate", "endDate", "pickUp", "dropOff", "note"]);
-            return res.status(200).json({
+        const schedule = await Schedule.findById(scheduleId )
+        .select("vehicleType")
+        .select("vehicleStatus")
+        .select("driverName")
+        .select("clientName")
+        .select("clientCompany")
+        .select("service")
+        .select("startDate")
+        .select("endDate")
+        .select("pickUp")
+        .select("dropOff")
+        .select("note")
+        return res.status(200).json({
                 status: "success",
                 message: 'Schedule Info fetched succesfully',
-                schedules,
+                schedule,
             });
         } catch (error) {
         next(error);
